@@ -4,12 +4,14 @@ const headerRight = document.querySelector('.header__right');
 menuBtn.addEventListener('click', () => {
   menuBtn.classList.toggle('active');
   headerRight.classList.toggle('active');
+  document.body.classList.toggle('ov-hidden');
 })
 
 headerRight.querySelectorAll('a').forEach(elem => {
   elem.addEventListener('click', () => {
     menuBtn.classList.remove('active');
     headerRight.classList.remove('active');
+    document.body.classList.remove('ov-hidden');
   })
 })
 

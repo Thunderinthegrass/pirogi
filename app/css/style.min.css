@@ -112,6 +112,10 @@ body {
   opacity: 1 !important;
 }
 
+.ov-hidden {
+  overflow: hidden;
+}
+
 .page-count {
   display: none;
   position: absolute;
@@ -578,6 +582,100 @@ body {
   }
 }
 
+.contacts__inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.contacts__start {
+  width: 50%;
+}
+.contacts__end {
+  width: 50%;
+  padding-left: 30px;
+}
+.contacts__map {
+  height: 450px;
+  background: #fee440;
+}
+.contacts__map iframe {
+  width: 100%;
+  height: 100%;
+}
+.contacts__item-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #252424;
+  margin-bottom: 5px;
+}
+.contacts__item {
+  margin-bottom: 30px;
+}
+.contacts__text {
+  color: #252424;
+}
+.contacts__phone {
+  color: #252424;
+}
+.contacts .socials {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+}
+.contacts .socials__item svg {
+  width: 30px;
+  height: 30px;
+  fill: #e63946;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+.contacts .socials__item svg:active {
+  opacity: 0.8;
+}
+.contacts .socials .icon-vk:hover {
+  fill: #5078a5;
+}
+.contacts .socials .icon-telegram:hover {
+  fill: #279FDA;
+}
+@media (max-width: 992px) {
+  .contacts__map {
+    height: 350px;
+  }
+}
+@media (max-width: 767px) {
+  .contacts__inner {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    gap: 40px;
+  }
+  .contacts__start {
+    width: 100%;
+  }
+  .contacts__end {
+    width: 100%;
+  }
+  .contacts__map {
+    margin: 0 -15px;
+  }
+  .contacts__item:last-child {
+    margin-bottom: 0;
+  }
+  .contacts .socials {
+    gap: 15px;
+  }
+  .contacts .socials__item svg {
+    width: 45px;
+    height: 45px;
+  }
+}
+
 .header {
   padding: 5px 0;
   background: #252424;
@@ -835,10 +933,17 @@ body {
     height: auto;
     gap: 5px;
   }
+  .header .nav__item {
+    width: 100%;
+    text-align: center;
+  }
   .header .nav__link {
     padding: 10px 0;
     display: block;
     width: 100%;
+  }
+  .header .nav__link:hover::after {
+    display: none;
   }
   .header .mobile-menu-btn {
     display: -webkit-box;

@@ -28,11 +28,11 @@
       border-radius: 2px;
       transition: 0.5s;
     }
-    .top-line{
-      transition-delay: .3s;
+    .top-line {
+      transition-delay: 0.3s;
     }
-    .bottom-line{
-      transition-delay: .3s;
+    .bottom-line {
+      transition-delay: 0.3s;
     }
     .middle-line {
       position: relative;
@@ -51,7 +51,7 @@
     &.active {
       .middle-line {
         transform: rotate(-405deg);
-        &::after{
+        &::after {
           transform: rotate(270deg);
         }
       }
@@ -128,7 +128,7 @@
     padding: 0 17px;
     border-radius: 28px;
     transition-property: color, backbround;
-    transition-duration: .3s;
+    transition-duration: 0.3s;
     &:hover {
       background: #ffffff;
       color: #252424;
@@ -187,10 +187,19 @@
       height: auto;
       gap: 5px;
     }
+    .nav__item {
+      width: 100%;
+      text-align: center;
+    }
     .nav__link {
       padding: 10px 0;
       display: block;
       width: 100%;
+      &:hover{
+        &::after{
+          display: none;
+        }
+      }
     }
     .mobile-menu-btn {
       display: flex;
