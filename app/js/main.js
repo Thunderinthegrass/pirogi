@@ -32,5 +32,7 @@ for (let i = 0; i < productSizeBtns.length; i++) {
   })
 }
 
+//попапы
+
 
 
