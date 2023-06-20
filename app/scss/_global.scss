@@ -52,49 +52,6 @@ body {
 .ov-hidden{
   overflow: hidden;
 }
-//modals
-.popup-overlay {
-  position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.87);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100%;
-  // opacity: 0;
-  // visibility: hidden;
-  transition: all 0.3s ease-in-out;
-  z-index: 10;
-  overflow-y: auto;
-  padding: 20px;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  &::-webkit-scrollbar-thumb {
-    display: none;
-  }
-}
-.popup {
-  // display: none;
-  margin: auto;
-}
-
-.modal-overlay--visible {
-  opacity: 1;
-  visibility: visible;
-  transition: all 0.3s ease-in-out;
-  background: rgba(0, 0, 0, 0.87);
-  backdrop-filter: blur(5px);
-  z-index: 999;
-}
-
-.modal--visible {
-  display: block;
-}
 .color-scheme{
   color: #ffbe0b;
   color: #fb5607;

@@ -60,6 +60,9 @@
     max-width: 340px;
     width: 100%;
     margin-bottom: 30px;
+    .category-active{
+      display: block;
+    }
   }
   .product {
     background: #ffffff;
