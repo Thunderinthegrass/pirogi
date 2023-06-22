@@ -1,3 +1,19 @@
+function scrollToLink() {
+  const anchors = document.querySelectorAll('a[href*="#"]');
+
+  for (let anchor of anchors) {
+    anchor.addEventListener("click", function (event) {
+      event.preventDefault();
+      const blockID = anchor.getAttribute("href");
+      document.querySelector("" + blockID).scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+  }
+}
+scrollToLink();
+
 const menuBtn = document.querySelector(".mobile-menu-btn");
 const headerRight = document.querySelector(".header__right");
 
@@ -114,3 +130,22 @@ function filters() {
 }
 
 filters();
+
+//подстановка значений
+function dataSubstitution() {
+  catalogItems.forEach((elem) => {
+    let btn = elem.querySelector('.product__order-btn');
+    let name = elem.querySelector('.product__title').textContent;
+    let img = elem.querySelector('.product__img').getAttribute('src');
+    let orderPopup = document.querySelector('.order-popup');
+    
+
+    btn.addEventListener('click', () => {
+      orderPopup.querySelector('.order__name').innerHTML = name;
+      orderPopup.querySelector('.order__price').innerHTML = elem.querySelector('.product__price').textContent;
+      orderPopup.querySelector('.order__size').innerHTML = elem.querySelector('.product__size-btn.active').textContent;
+      orderPopup.querySelector('.order__img').setAttribute('src', elem.querySelector('.product__img').getAttribute('src'))
+    })
+  })
+}
+dataSubstitution()
