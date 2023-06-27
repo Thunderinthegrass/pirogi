@@ -71,6 +71,11 @@ function scripts() {
     .pipe(browserSync.stream())
 }
 
+function php() {
+  return src('app/**/*.php')
+    .pipe(dest('dist/'))
+}
+
 function html() {
   return src('app/**/*.html')
     .pipe(webpHtml())
@@ -112,11 +117,12 @@ exports.browsersync = browsersync;
 exports.scripts = scripts;
 exports.images = images;
 exports.cleanDist = cleanDist;
+exports.php = php;
 exports.html = html;
 exports.svgSprites = svgSprites;
 
 
-exports.build = series(cleanDist, html, images, svgSprites, build);
+exports.build = series(cleanDist, php, html, images, svgSprites, build);
 exports.default = parallel(images, styles ,scripts ,browsersync, svgSprites, watching);
 
 

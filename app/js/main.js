@@ -136,7 +136,6 @@ function dataSubstitution() {
   catalogItems.forEach((elem) => {
     let btn = elem.querySelector('.product__order-btn');
     let name = elem.querySelector('.product__title').textContent;
-    let img = elem.querySelector('.product__img').getAttribute('src');
     let orderPopup = document.querySelector('.order-popup');
     
 
@@ -148,4 +147,37 @@ function dataSubstitution() {
     })
   })
 }
-dataSubstitution()
+dataSubstitution();
+
+//форма
+function formm() {
+  let forms = document.querySelector('.form-send');
+
+  // if (forms.length === 0) {
+  //   return;
+  // }
+
+  let formSend = function(form) {
+    let xhr = new XMLHttpRequest();
+    let url = 'mail/mail.php';
+
+    xhr.open('POST', url);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    xhr.onload = function() {
+      console.log(xhr.response);
+    }
+
+    xhr.send();
+  }
+
+  // for (let i = 0; i < forms.length; i++) {
+    forms.addEventListener('submit', function(e) {
+      e.preventDefault();
+      let form = e.currentTarget;
+      formSend(form);
+    })
+  // }
+}
+
+formm();
