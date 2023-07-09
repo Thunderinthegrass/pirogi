@@ -11,6 +11,22 @@ const webp          = require('gulp-webp');
 const webpHtml      = require('gulp-webp-html');
 const webpCss       = require('gulp-webp-css');
 const svgSprite = require("gulp-svg-sprite");
+const ftp           = require('vinyl-ftp');
+
+function deploy() {
+  let connect = ftp.create({
+    host: '185.137.235.119',
+    user: 'nasachev',
+    password: 'mK9pZ6eL1i',
+    parallel: 10,
+  });
+
+  let proj = [
+    'dist/**'
+  ]
+
+  return src(proj, {buffer: false}).pipe(connect.newer('/').pipe(connect.dest('/')));
+}
 
 function browsersync() {
   browserSync.init({
@@ -120,9 +136,10 @@ exports.cleanDist = cleanDist;
 exports.php = php;
 exports.html = html;
 exports.svgSprites = svgSprites;
+exports.deploy = deploy;
 
 
-exports.build = series(cleanDist, php, html, images, svgSprites, build);
+exports.build = series(cleanDist, php, html, images, svgSprites, build, deploy);
 exports.default = parallel(images, styles ,scripts ,browsersync, svgSprites, watching);
 
 

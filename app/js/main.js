@@ -153,9 +153,9 @@ dataSubstitution();
 function formm() {
   let forms = document.querySelector('.form-send');
 
-  // if (forms.length === 0) {
-  //   return;
-  // }
+  if (forms === false) {
+    return;
+  }
 
   let formSend = function(form) {
     let xhr = new XMLHttpRequest();
@@ -166,6 +166,8 @@ function formm() {
 
     xhr.onload = function() {
       console.log(xhr.response);
+      console.log(xhr.status);
+      alert('ujnjdj')
     }
 
     xhr.send();

@@ -157,7 +157,7 @@ body {
 
 .hero {
   color: #ffffff;
-  background-image: url(../img/hero-bg4.jpg);
+  background-image: url(../img/hero-bg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -1140,7 +1140,7 @@ body {
   opacity: 1;
 }
 @supports (-webkit-appearance:none){
-.hero{background-image:url(../img/hero-bg4.webp)}
+.hero{background-image:url(../img/hero-bg.webp)}
 }
 
  @media (max-width: 767px){
