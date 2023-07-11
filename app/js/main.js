@@ -133,6 +133,7 @@ filters();
 
 //подстановка значений
 function dataSubstitution() {
+  let inputHidden = document.querySelectorAll('.input-hidden')
   catalogItems.forEach((elem) => {
     let btn = elem.querySelector('.product__order-btn');
     let name = elem.querySelector('.product__title').textContent;
@@ -140,9 +141,16 @@ function dataSubstitution() {
     
 
     btn.addEventListener('click', () => {
+      let price = elem.querySelector('.product__price').textContent;
+      let size = elem.querySelector('.product__size-btn.active').textContent
+
+      inputHidden[0].value = name.trim();
+      inputHidden[1].value = price.trim();
+      inputHidden[2].value = size.trim();
+
       orderPopup.querySelector('.order__name').innerHTML = name;
-      orderPopup.querySelector('.order__price').innerHTML = elem.querySelector('.product__price').textContent;
-      orderPopup.querySelector('.order__size').innerHTML = elem.querySelector('.product__size-btn.active').textContent;
+      orderPopup.querySelector('.order__price').innerHTML = price;
+      orderPopup.querySelector('.order__size').innerHTML = size;
       orderPopup.querySelector('.order__img').setAttribute('src', elem.querySelector('.product__img').getAttribute('src'))
     })
   })
@@ -157,7 +165,28 @@ function formm() {
     return;
   }
 
+  let a = 1;
+
+  // 'name=value&name2=value2'
+
+  let serialize = function(form) {
+    let items = document.querySelectorAll('input, select, textarea');
+    let str = '';
+    for (let i = 0; i < items.length; i++) {
+      let item = items[i];
+      let name = item.name;
+      let value = item.value;
+      let separator = i === 0 ? '' : '&';
+
+      if (name) {
+        str += separator + name + '=' + value;
+      }
+    }
+    return str;
+  };
+
   let formSend = function(form) {
+    let data = serialize(form);
     let xhr = new XMLHttpRequest();
     let url = 'mail/mail.php';
 
@@ -165,21 +194,21 @@ function formm() {
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     xhr.onload = function() {
-      console.log(xhr.response);
-      console.log(xhr.status);
-      alert('ujnjdj')
+      document.querySelector('.success-popup').classList.add('popup--visible');
+      document.querySelector('.order-popup').classList.remove('popup--visible');
     }
 
-    xhr.send();
+    if (a == 1) {
+      xhr.send(data);
+    }
+    // xhr.send();
   }
 
-  // for (let i = 0; i < forms.length; i++) {
-    forms.addEventListener('submit', function(e) {
-      e.preventDefault();
-      let form = e.currentTarget;
-      formSend(form);
-    })
-  // }
+  forms.addEventListener('submit', function(e) {
+    e.preventDefault();
+    let form = e.currentTarget;
+    formSend(form);
+  })
 }
 
 formm();
