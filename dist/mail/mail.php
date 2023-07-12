@@ -33,5 +33,12 @@
   $headers .= "Content-type: text/html; charset=utf-8\r\n";
   $headers .= "From: $admin_email\r\n";
 
-  mail($admin_email, $form_subject, $message, $headers);
+  $success_send = mail($admin_email, $form_subject, $message, $headers);
+
+  if ($success_send) {
+    echo 'success';
+  }
+  else {
+    echo 'error';
+  }
 

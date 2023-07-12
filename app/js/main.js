@@ -35,9 +35,12 @@ headerRight.querySelectorAll("a").forEach((elem) => {
 const productSizeBtn = document.querySelectorAll(".product__size-btn");
 const productSizeBtns = document.querySelectorAll(".product__size-btns");
 
-for (let i = 0; i < productSizeBtns.length; i++) {
-  productSizeBtns[i].querySelectorAll(".product__size-btn").forEach((elem) => {
+for (let i = 0; i < productSizeBtns.length; i++) {//перебираем каждый контецнер с кнопками
+  
+  productSizeBtns[i].querySelectorAll(".product__size-btn").forEach((elem) => {//в каждом контейнере берем его кнопки
+    
     elem.addEventListener("click", () => {
+      
       productSizeBtns[i]
         .querySelectorAll(".product__size-btn")
         .forEach((el) => {
@@ -45,6 +48,9 @@ for (let i = 0; i < productSizeBtns.length; i++) {
         });
 
       elem.classList.add("active");
+      
+      let productPrice = elem.closest('.product').querySelector('.price').innerHTML;//берем цену пирога
+      
     });
   });
 }
@@ -72,6 +78,7 @@ function popup() {
   });
 
   overlay.addEventListener("click", (e) => {
+    document.body.classList.remove('ov-hidden');
     if (e.target == overlay) {
       overlay.classList.remove("popup-overlay--visible");
       popups.forEach((el) => {
@@ -81,6 +88,7 @@ function popup() {
   });
 
   closeBtn.forEach((elem) => {
+    document.body.classList.remove('ov-hidden');
     elem.addEventListener("click", () => {
       overlay.classList.remove("popup-overlay--visible");
       popups.forEach((el) => {
@@ -160,6 +168,7 @@ dataSubstitution();
 //форма
 function formm() {
   let forms = document.querySelector('.form-send');
+  let successPopup = document.querySelector('.success-popup');
 
   if (forms === false) {
     return;
@@ -194,14 +203,24 @@ function formm() {
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     xhr.onload = function() {
-      document.querySelector('.success-popup').classList.add('popup--visible');
-      document.querySelector('.order-popup').classList.remove('popup--visible');
+      // document.querySelector('.success-popup').classList.add('popup--visible');
+      // document.querySelector('.order-popup').classList.remove('popup--visible');
+
+      if (xhr.response === 'success') {
+        successPopup.classList.add('popup--visible');
+        document.querySelector('.order-popup').classList.remove('popup--visible');
+
+        if (successPopup.classList.contains('popup--visible')) {
+          document.body.classList.add('ov-hidden');
+        }
+      }
     }
 
     if (a == 1) {
       xhr.send(data);
     }
-    // xhr.send();
+
+    form.reset();
   }
 
   forms.addEventListener('submit', function(e) {
