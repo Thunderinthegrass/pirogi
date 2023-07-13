@@ -35,7 +35,7 @@ headerRight.querySelectorAll("a").forEach((elem) => {
 const productSizeBtn = document.querySelectorAll(".product__size-btn");
 const productSizeBtns = document.querySelectorAll(".product__size-btns");
 
-for (let i = 0; i < productSizeBtns.length; i++) {//перебираем каждый контецнер с кнопками
+for (let i = 0; i < productSizeBtns.length; i++) {//перебираем каждый контеинер с кнопками
   
   productSizeBtns[i].querySelectorAll(".product__size-btn").forEach((elem) => {//в каждом контейнере берем его кнопки
     
@@ -167,6 +167,7 @@ dataSubstitution();
 
 //форма
 function formm() {
+  // let forms = document.querySelectorAll('.form-send');если форм несколько
   let forms = document.querySelector('.form-send');
   let successPopup = document.querySelector('.success-popup');
 
@@ -175,8 +176,6 @@ function formm() {
   }
 
   let a = 1;
-
-  // 'name=value&name2=value2'
 
   let serialize = function(form) {
     let items = document.querySelectorAll('input, select, textarea');
@@ -203,8 +202,6 @@ function formm() {
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     xhr.onload = function() {
-      // document.querySelector('.success-popup').classList.add('popup--visible');
-      // document.querySelector('.order-popup').classList.remove('popup--visible');
 
       if (xhr.response === 'success') {
         successPopup.classList.add('popup--visible');
@@ -228,6 +225,14 @@ function formm() {
     let form = e.currentTarget;
     formSend(form);
   })
+
+  // for (let i = 0; i < forms.length; i++) {если форм несколько
+  //   forms[i].addEventListener('submit', function(e) {
+  //     e.preventDefault();
+  //     let form = e.currentTarget;
+  //     formSend(form);
+  //   })
+  // }
 }
 
 formm();

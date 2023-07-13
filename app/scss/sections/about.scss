@@ -44,14 +44,15 @@
     }
     &__info{
       width: 100%;
+      padding-left: 0;
+      padding-top: 15px;
+      padding-bottom: 30px;
+    }
+    &__text{
+      font-size: 16px;
     }
     &__img{
       width: 100%;
     }
-  }
-  @media (max-width: 576px) {
-    &__info{
-      padding-top: 60px;
-      padding-bottom: 60px;    }
   }
 }
